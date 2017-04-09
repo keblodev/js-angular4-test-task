@@ -1,0 +1,42 @@
+
+<md-grid-list 
+  cols="4" 
+  rowHeight="300px"
+  >
+  <md-grid-tile>
+    <md-card 
+      *ngIf="!userStats"
+      class="user-stats-loading">
+      <md-spinner>
+      </md-spinner>      
+    </md-card>
+    <md-card 
+      *ngIf="!!userStats"
+      class="user-stats">
+      <md-list>
+        <h3 md-subheader>Total Messages</h3>
+        <md-list-item>
+          <md-icon md-list-icon>folder</md-icon>
+          <h4 md-line>{{userStats.totallMessagesCount}}</h4>
+        </md-list-item>
+        <h3 md-subheader>Messages To Process</h3>
+        <md-list-item>
+          <md-icon md-list-icon>note</md-icon>
+          <h4 md-line>{{userStats.toProcessCount}}</h4>
+        </md-list-item>
+        <h3 md-subheader>Messages Processed</h3>
+        <md-list-item>
+          <md-icon md-list-icon>note</md-icon>
+          <h4 md-line>{{userStats.processedCount}}</h4>
+        </md-list-item>        
+      </md-list>
+    </md-card>
+  </md-grid-tile>
+  <md-grid-tile>
+    <md-card class="app-input-section">
+      <p>mail view</p>
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>
+
+
