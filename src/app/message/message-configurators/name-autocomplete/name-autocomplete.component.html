@@ -1,0 +1,17 @@
+<md-input-container>
+   <input 
+    mdInput
+    [formControl]="stateCtrl" 
+    [mdAutocomplete]="auto"
+    placeholder="Select a Name" 
+    tabindex="-1"
+    >
+</md-input-container>
+
+<md-autocomplete 
+  #auto="mdAutocomplete">
+  <md-option 
+    *ngFor="let name of filteredNames | async | slice:0:10" [value]="name.value">
+    {{name.value}}
+  </md-option>
+</md-autocomplete>

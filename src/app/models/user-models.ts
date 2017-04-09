@@ -1,14 +1,12 @@
-export interface User {
+export interface UserModel {
     id:         String
-    stats:      UserStats
+    stats:      UserStatsModel
     isLoggedIn: Boolean
     isActive:   Boolean
 }
 
-export interface UserStats {
+export interface UserStatsModel {
     totallMessagesCount: Number
     toProcessCount:      Number
     processedCount:      Number  
 }
-
-//todo: add list of UserStats

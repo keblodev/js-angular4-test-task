@@ -2,137 +2,155 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
-import { UserStats } from '../models/user-models';
+import { UserStatsModel } from '../models/user-models';
+
+import { RemoteValuesStoreService, PersistableStoreKeyNames } from './remote-values-store.service';
 
 @Injectable()
 export class ApiService {
 
-  constructor(private http: Http) {}
+  private loggin: Boolean = true;
+  
+  constructor(
+    private http: Http,
+    private remoteValuesStoreService: RemoteValuesStoreService
+    ) {}
 
-  //a sparce version of mail collection
-  //todo: do return type insetead of any
-  getUserStatsForUserId(id: string): Observable<UserStats> {
-    const returnPromise = new Promise(
-        resolve => resolve({ 
-            totallMessagesCount: 100,
-            toProcessCount:      40,
-            processedCount:      60,                  
-        })
-      );
-    return Observable.fromPromise(returnPromise);
-
-    //TODO:
-    // return this.http.get(`api/users/${id}/mails&sparce=true`)
-    //   .map(response => response.json());
+  getUserStats(): Observable<UserStatsModel> {
+    return this.http.get(`api/users/${this.getUserId()}/messages/stats`)
+      .map(response => response.json());
   }
 
-  //todo: do return type insetead of any
-  getNextMessageCollection(): Observable<any> {
-    const returnPromise = new Promise(
-        resolve => resolve({ messages: [
-            {
-              messageId:    'someMsgId1',
-              isProcessed:  false,
-              messageType:  'personBdType',
-              content: 'Mate1, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy.',
-            },
-            {
-              messageId:    'someMsgId2',
-              isProcessed:  false,
-              messageType:  'babyBdType',
-              content: 'Whooa1 well done and congratulations on the birth of [babyname] on [birthdate].',
-            },          
-            {
-              messageId:    'someMsgId3',
-              isProcessed:  false,
-              messageType:  'babyBdType',
-              content: 'Whooa2 well done and congratulations on the birth of [babyname] on [birthdate].',
-            },          
-            {
-              messageId:    'someMsgId4',
-              isProcessed:  false,
-              messageType:  'personBdType',
-              content: 'Mate2, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy.',
-            },
-            {
-              messageId:    'someMsgId5',
-              isProcessed:  false,
-              messageType:  'personBdType',
-              content: 'Mate3, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy.',
-            },            
-          ]          
-        })
-      );
-    return Observable.fromPromise(returnPromise);    
+  getNextMessageCollection(): Observable<any> {  
+    return this.http.get(`api/users/${this.getUserId()}/messages`)
+      .map(response => response.json());        
   }
 
-  //todo: do return type insetead of any
-  getGiftsForUserAndMessageId(userId: string, messageId: string): Observable<any> {
-    const returnPromise = new Promise(
-        resolve => resolve({messages: [
-          {
-            giftId:    'someGiftId1',
-            giftType:  'giftType1',
-            title:     'someGiftTitle1',
-            descr:     'someDescr1',
-            imageUrl:  'some-gift-image-url1.jpg'
-          },
-          {
-            giftId:    'someGiftId2',
-            giftType:  'giftType2',
-            title:     'someGiftTitle2',
-            descr:     'someDescr2',
-            imageUrl:  'some-gift-image-url2.jpg'
-          },
-        ]})
-      );
-    return Observable.fromPromise(returnPromise);
+  getGifts(): Observable<any> {  
+    const specialGiftsListFromStore = this.remoteValuesStoreService
+      .getValueByStoreKey(PersistableStoreKeyNames.MessangerAppMessageSpecialGifts);
+    if (specialGiftsListFromStore) {
+      return Observable.from([specialGiftsListFromStore.value]);
+    } else {    
+      return this.http.get(`api/users/${this.getUserId()}/message/gifts`)
+        .map(response => {
+          const responseSerialized = response.json();
 
-    //TODO:
-    // return this.http.get(`api/users/${id}/gifts`)
-    //   .map(response => response.json());    
+          this.remoteValuesStoreService
+            .setValueByStoreKey(PersistableStoreKeyNames.MessangerAppMessageSpecialGifts, responseSerialized)
+          return responseSerialized;        
+        });
+    }
   }
 
-  //todo: do return type insetead of any
-  getSpecialGiftsForUserAndMessageId(id: string): Observable<any> {
-    const returnPromise = new Promise(
-        resolve => resolve({gifts: [
-          {
-            giftId:    'someSpecialGiftId1',
-            giftType:  'specialGiftType1',
-            title:     'someSpecialGiftTitle1',
-            descr:     'someSpecialDescr1',
-            imageUrl:  'some-specialgift-image-url1.jpg'
-          },
-          {
-            giftId:    'someSpecialGiftId2',
-            giftType:  'specialGiftType2',
-            title:     'someSpecialGiftTitle2',
-            descr:     'someSpecialDescr2',
-            imageUrl:  'some-specialgift-image-url2.jpg'
-          },
-        ]})
-      );
-    return Observable.fromPromise(returnPromise);
+  getSpecialGifts(): Observable<any> {
+    const giftsListFromStore = this.remoteValuesStoreService
+      .getValueByStoreKey(PersistableStoreKeyNames.MessangerAppMessageGifts);
+    if (giftsListFromStore) {
+      return Observable.from([giftsListFromStore.value]);
+    } else {
+    return this.http.get(`api/users/${this.getUserId()}/message/gifts/specials`)
+      .map(response => {
+        const responseSerialized = response.json();
 
-    //TODO:
-    // return this.http.get(`api/users/${id}/gifts/specials`)
-    //   .map(response => response.json());    
+        this.remoteValuesStoreService
+          .setValueByStoreKey(PersistableStoreKeyNames.MessangerAppMessageGifts, responseSerialized)
+        return responseSerialized;        
+      });
+    }
   }  
 
-  //todo: do return type insetead of any
-  getNamesListForUserAndMessageId(userId: string, messageId: string): Observable<any> {
-    const returnPromise = new Promise(
-        resolve => resolve({names: [
-          {
-            name: 'Joghn'
-          },
-          {
-            name: 'NotJohn'
-          },
-        ]})
-      );
-    return Observable.fromPromise(returnPromise);    
+  getNamesList(): Observable<any> {
+    const namesListFromStore = this.remoteValuesStoreService
+      .getValueByStoreKey(PersistableStoreKeyNames.MessangerAppMessageNames);
+    if (namesListFromStore) {
+      return Observable.from([namesListFromStore.value]);
+    } else {
+      return this.http.get(`api/users/${this.getUserId()}/message/names`)
+        .map(response => {
+          const responseSerialized = response.json();
+          this.remoteValuesStoreService
+            .setValueByStoreKey(PersistableStoreKeyNames.MessangerAppMessageNames, responseSerialized)
+          return responseSerialized;
+        });
+    }   
   }
 
+  login(userCredentials) {
+    return this.http.post(`/api/login`, userCredentials)
+      .map(response => response.json())
+  }
+
+  auth() {    
+    const token = this.getAuthToken();
+    if (!token) {
+      return Observable.of([]);
+    } else {
+      return this.http.post(`/api/auth`, {
+        authToken: token
+      }).map(response => response.json());
+    }
+  }
+
+  postMessage(message) {
+    return this.http
+      .patch(`/api/users/${this.getUserId()}/messages/${message.messageId}/update`, message)
+      .map(response => response.json());
+  }
+  
+  logout() {
+    const userId = this.getUserId();
+
+    return this.http.post(`/api/logout`, {
+      userId: userId
+    }).map(response => {
+      //yes -> ideally all store operations should be in remoteValuesStoreService
+      localStorage.removeItem('messageAppUserId');
+      localStorage.removeItem('messageAppAuthToken');
+
+      return response.json()
+    });
+  }
+
+  //for demo purpose only
+  reset() {
+    const userId = this.getUserId();
+
+    return this.http.post(`/api/reset`, {
+      userId: userId
+    }).map(response => {
+      
+      //yes -> ideally all store operations should be in remoteValuesStoreService
+      localStorage.removeItem('messageAppUserId');
+      localStorage.removeItem('messageAppAuthToken');
+
+      this.remoteValuesStoreService.resetStore()
+      return response.json()
+    });
+  }
+
+  private getUserId() {
+    const userId = localStorage.getItem('messageAppUserId');
+
+    if (userId) {
+      return userId;
+    } else {
+      if (this.loggin) {
+        console.warn("[getUser]user id not found -> redirecting to login")
+      }
+      return false;
+    }
+  }
+
+  private getAuthToken() {
+    const authToken = localStorage.getItem('messageAppAuthToken');
+    if (authToken) {
+      return authToken;
+    } else {
+      if (this.loggin) {
+        console.warn("[getAuthToken]token not found -> redirecting to login")
+      }
+      return false;
+    }
+  }
 }

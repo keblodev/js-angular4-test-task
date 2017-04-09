@@ -1,0 +1,12 @@
+<md-select placeholder="Select a Gift" [(ngModel)]="selectedValue">
+  <md-option *ngFor="let gift of gifts | async" [value]="gift">
+    <ul>
+      <li>
+        <img src="{{gift.imageUrl}}" />
+      </li>
+      <li>
+            {{ gift.title }}
+      </li>
+    </ul>
+  </md-option>
+</md-select>

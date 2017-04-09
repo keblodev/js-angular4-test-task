@@ -1,0 +1,6 @@
+
+.cdk-overlay-pane .mat-dialog-container, 
+.cdk-overlay-pane .mat-dialog-container .mat-dialog-content,
+.cdk-overlay-pane .mat-dialog-container .mat-grid-tile {
+    overflow: visible;
+}

@@ -1,0 +1,40 @@
+
+<md-dialog-content>
+  <md-card>
+    <md-card-title>
+      <md-card-content>
+        <h2 md-subheader>Recepient's Name: {{message.recipientName}}</h2>        
+        <h2 md-subheader>Text To Be Send:</h2><p>{{messageTextCompiled}}</p>
+      </md-card-content>      
+    </md-card-title>
+  </md-card>
+  <md-card>
+    <h2 md-subheader>Configure Message's Text:</h2>
+    <md-grid-list
+      [cols]="associatedConfiguratorComponents.length"
+      rowHeight="50">
+      <md-grid-tile 
+        *ngFor = "let associatedComponentConfiguration of associatedConfiguratorComponents">
+        <app-dynamic-component          
+          [componentData] = "{
+            componentConfiguration: associatedComponentConfiguration, 
+            inputs: {
+              dynamicComponentObservable: dynamicComponentObservableValue
+            }
+          }"
+        ></app-dynamic-component>  
+      </md-grid-tile>  
+    </md-grid-list>   
+  </md-card>  
+</md-dialog-content>
+<md-dialog-actions>
+  <button 
+  md-dialog-close
+  md-raised-button>Close</button>
+  <button   
+  md-raised-button
+  (click)="onDialogClose()"
+  [disabled]="!(isReady | async)"
+  >Submit</button>
+
+</md-dialog-actions>

@@ -1,0 +1,19 @@
+{
+    "user1Id": [
+        {
+            "giftId":    "someSpecialGiftId1",
+            "giftType":  "specialGiftType1",
+            "title":     "someSpecialGiftTitle1",
+            "descr":     "someSpecialDescr1",
+            "imageUrl":  "/assets/giftimages/some-specialgift-image-url1.jpg"
+        },
+        {
+            "giftId":    "someSpecialGiftId2",
+            "giftType":  "specialGiftType2",
+            "title":     "someSpecialGiftTitle2",
+            "descr":     "someSpecialDescr2",
+            "imageUrl":  "/assets/giftimages/some-specialgift-image-url2.jpg"
+        }
+    ],
+    "user2Id": []
+}

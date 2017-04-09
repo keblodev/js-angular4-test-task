@@ -1,10 +1,31 @@
-
-<md-card class="app-input-section">
-  <md-input-container class="example-full-width">
-    <input
-      mdInput
-      placeholder="Company"
-      value="Google">
-  </md-input-container>
-  <a md-raised-button routerLink="/dashboard">Raised button</a>
-</md-card>
+<form 
+  novalidate
+  [formGroup]="loginForm"    
+  (ngSubmit)="login(loginForm.value, loginForm.valid)">
+  <md-card class="app-input-section">
+    <md-input-container class="example-full-width">
+      <input
+        formControlName="login"
+        mdInput
+        placeholder="Name"
+        required        
+        type="text"        
+        value="">
+    </md-input-container>
+    <md-input-container class="example-full-width">
+      <input
+        formControlName="password"
+        mdInput
+        placeholder="Password"
+        required        
+        type="password"
+        value="">
+    </md-input-container>  
+    <button 
+      md-raised-button       
+      routerLink="/dashboard"
+      type="submit"
+      [disabled]="!loginForm.valid"
+      >Login</button>
+  </md-card>
+</form>

@@ -1,0 +1,75 @@
+{
+    "user1Id": [
+        {
+            "messageId":    "someMsgId1",
+            "isProcessed":  "false",
+            "messageType":  "personBdType",
+            "recipientName":"someMsgName1",              
+            "template":     "Mate1, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy."
+        },
+        {
+            "messageId":    "someMsgId2",
+            "isProcessed":  "false",
+            "messageType":  "babyBdType",
+            "recipientName":"someMsgName2",              
+            "template":     "Whooa1 well done and congratulations on [gift] the birth of [babyname] on [birthdate]."
+        },          
+        {
+            "messageId":    "someMsgId3",
+            "isProcessed":  "false",
+            "messageType":  "babyBdType",
+            "recipientName":"someMsgName3",                            
+            "template":     "Whooa2 well done and congratulations on the birth of [babyname] on [birthdate]."
+        },          
+        {
+            "messageId":    "someMsgId4",
+            "isProcessed":  "false",
+            "messageType":  "personBdType",
+            "recipientName":"someMsgName4",              
+            "template":     "Mate2, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy."
+        },
+        {
+            "messageId":    "someMsgId5",
+            "isProcessed":  "false",
+            "messageType":  "personBdType",
+            "recipientName":"someMsgName5",              
+            "template":     "Mate3, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy."
+        },
+        {
+            "messageId":    "someMsgId6",
+            "isProcessed":  "false",
+            "messageType":  "personBdType",
+            "recipientName":"someMsgName6",              
+            "template":     "Mate1, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy."
+        },
+        {
+            "messageId":    "someMsgId7",
+            "isProcessed":  "false",
+            "messageType":  "babyBdType",
+            "recipientName":"someMsgName7",              
+            "template":     "Whooa1 well done and congratulations on [gift] the birth of [babyname] on [birthdate]."
+        },          
+        {
+            "messageId":    "someMsgId8",
+            "isProcessed":  "false",
+            "messageType":  "babyBdType",
+            "recipientName":"someMsgName8",                            
+            "template":     "Whooa2 well done and congratulations on the birth of [babyname] on [birthdate]."
+        },          
+        {
+            "messageId":    "someMsgId9",
+            "isProcessed":  "false",
+            "messageType":  "personBdType",
+            "recipientName":"someMsgName9",              
+            "template":     "Mate2, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy."
+        },
+        {
+            "messageId":    "someMsgId10",
+            "isProcessed":  "false",
+            "messageType":  "personBdType",
+            "recipientName":"someMsgName10",              
+            "template":     "Mate3, Happy Birthday. \n To celebrate this once a year occasion we have picked the following gift: [gift]. Enjoy."
+        }        
+    ],
+    "user2Id": []
+}

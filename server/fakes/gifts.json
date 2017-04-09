@@ -1,0 +1,75 @@
+{
+    "user1Id": [
+        {
+            "giftId":    "someGiftId1",
+            "giftType":  "giftType1",
+            "title":     "someGiftTitle1",
+            "descr":     "someDescr1",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url1.jpg"
+        },
+        {
+            "giftId":    "someGiftId2",
+            "giftType":  "giftType2",
+            "title":     "someGiftTitle2",
+            "descr":     "someDescr2",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url2.jpg"
+        },
+        {
+            "giftId":    "someGiftId3",
+            "giftType":  "giftType3",
+            "title":     "someGiftTitle3",
+            "descr":     "someDescr3",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url3.jpg"
+        },
+        {
+            "giftId":    "someGiftId4",
+            "giftType":  "giftType4",
+            "title":     "someGiftTitle4",
+            "descr":     "someDescr4",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url4.jpg"
+        },
+        {
+            "giftId":    "someGiftId5",
+            "giftType":  "giftType5",
+            "title":     "someGiftTitle5",
+            "descr":     "someDescr5",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url5.jpg"
+        },
+        {
+            "giftId":    "someGiftId6",
+            "giftType":  "giftType6",
+            "title":     "someGiftTitle6",
+            "descr":     "someDescr6",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url6.jpg"
+        },
+        {
+            "giftId":    "someGiftId7",
+            "giftType":  "giftType7",
+            "title":     "someGiftTitle7",
+            "descr":     "someDescr7",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url7.jpg"
+        },
+        {
+            "giftId":    "someGiftId8",
+            "giftType":  "giftType8",
+            "title":     "someGiftTitle8",
+            "descr":     "someDescr8",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url8.jpg"
+        },
+        {
+            "giftId":    "someGiftId9",
+            "giftType":  "giftType9",
+            "title":     "someGiftTitle9",
+            "descr":     "someDescr9",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url9.jpg"
+        },
+        {
+            "giftId":    "someGiftId10",
+            "giftType":  "giftType10",
+            "title":     "someGiftTitle10",
+            "descr":     "someDescr10",
+            "imageUrl":  "/assets/giftimages/some-gift-image-url10.jpg"
+        }                        
+    ],
+    "user2Id": []
+}

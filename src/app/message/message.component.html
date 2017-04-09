@@ -1,0 +1,11 @@
+<a 
+  md-raised-button 
+  [routerLink]="['/dashboard','messages', message.messageId, 'edit']">
+  <h3 md-subheader>{{message.recipientName}}</h3>
+  <md-list-item>
+    <h4 md-line>{{message.template | slice:0:10}}...</h4>        
+  </md-list-item>
+</a>
+<md-divider></md-divider>        
+
+

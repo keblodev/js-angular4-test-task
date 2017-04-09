@@ -1,0 +1,16 @@
+.mat-option ul {
+    align-items:    center;
+    display:        flex;
+    height:         100%;    
+    margin:         0;
+    padding-left:   0;
+}
+
+.mat-option ul li {
+    display: inline-flex;
+    margin:  5px;
+}
+
+.mat-option ul li img {
+    border-radius: 5px;
+}    
