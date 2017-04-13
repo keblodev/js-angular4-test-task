@@ -19,7 +19,7 @@ The user must selected the date of birth for the child and also what the name of
 
 ### Time frame spent:
     - 2 days in dev
-    - 1 day in test and detais
+    - 1 day in test and details
     + along with learning completely new set of Angular4 workflows and API's
 
 ### Features above scope:
@@ -31,7 +31,7 @@ The user must selected the date of birth for the child and also what the name of
 
 ## Before start:
 
-    ``` npm i ```
+    ` npm i `
 
 ## Development server
 
